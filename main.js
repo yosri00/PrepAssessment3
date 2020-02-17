@@ -11,98 +11,214 @@
 //==============================================================================
 //lets make an employee profile using closures
 
-  function employee (name,salary){
-    return {
-      name: name,
-      salary: salary
-    }   
+function employee(name, salary) {
+  return {
+    name: name,
+    salary: salary
+  }
+}
+
+var employeeA = employee("jack", 100);
+var employeeB = employee("Mark", 200);
+var employeeC = employee("Sara", 150);
+
+
+//create a function when invoked returns the name of that employee.
+
+// employeeA.sayMyName(); // "jack"
+// employeeB.sayMyName(); // "Mark"
+function employeeName(employee) {
+  var employee;
+  return {
+    MyName: function () {
+      return employee.name;
+
+    }
+  }
+}
+
+//now modify that closure and add a function that says hello to the employee name;
+
+// employeeA.sayHello(); // hello jack
+// employeeB.sayHello(); // hello Mark
+function employeeName(employee) {
+  var employee;
+  return {
+    MyName: function () {
+      return employee.name;
+
+    }
+       sayHello: function () {
+      return "hello" + employee["name"];
+    }
+  }
+}
+
+//modify your closure and add function increaseSalary that increases the salary for the employee by n value and return it.
+//employeeA.increaseSalary(50); // "your salary is 150$"
+
+//how about we let jack and mark meet togther!
+
+
+function employeeName(employee) {
+  var employee;
+  return {
+    MyName: function () {
+      return employee.name;
+
+    }
+       sayHello: function () {
+      return "hello" + employee["name"];
+    }
+
+        increaseSalary: function (n) {
+
+      return employee.salary + n
+
+    }
   }
 
-  var employeeA = employee("jack", 100);
-  var employeeB = employee("Mark", 200);
-  var employeeC = employee("Sara", 150);
 
 
-  //create a function when invoked returns the name of that employee.
 
-  // employeeA.sayMyName(); // "jack"
-  // employeeB.sayMyName(); // "Mark"
-
-
-  //now modify that closure and add a function that says hello to the employee name;
-
-  // employeeA.sayHello(); // hello jack
-  // employeeB.sayHello(); // hello Mark
-
-  //modify your closure and add function increaseSalary that increases the salary for the employee by n value and return it.
-  //employeeA.increaseSalary(50); // "your salary is 150$"
-
-  //how about we let jack and mark meet togther!
   //modify your closure and add function addFriend that accepts an object as a parameter, and let jack meets his friends.
 
   // employeeA.addFriend(employeeB); // "you just became friend with Mark"
   // employeeA.addFriend(employeeC); // "you just became friend with Mark and Sara"
 
-  //modify your closure to tell mark how many friends does he have.
+  function employeeName(employee) {
+    var employee;
+    return {
+      MyName: function () {
+        return employee.name;
 
-  // employeeA.listFriends(); // "you have 2 friends"
+      }
+       sayHello: function () {
+        return "hello" + employee["name"];
+      }
 
+        increaseSalary: function (n) {
 
-//=============================================================================
-/*                                  Q2                                       */
-//=============================================================================
-  //lets create a pet class using OOP concept,
-  // a - we need to create the pets (lets create only one for now), the invocation should take the name of the pet. 
+        return employee.salary + n
 
-  // var pet1 = Pet("doggy");
+      }
+          addFriend: function (obj) {
 
-  // b - we need function to add the other info for the pet, called addInfo function. Make sure your functions unneeded memory space
-
-  // pet1.addInfo(age, owner, gender, species);
-
-  // c- create another function to increase the pet age by n value.
-
-  // d - create a variable called availability with the default state as false, then create another function to check the pet state, returns true if the pet is available and false if it's not
-
-  // f- in order to change the state of the pet, create a function called changeState, when called it will make the pet avaliablity true,
-  //    and when called again it will make it false.
+      }
 
 
-  // Write your code here .....
-
-
-  // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
-
-//=============================================================================
-/*                                  Q3                                       */
-//=============================================================================
-function each(coll, f) {
-  if (Array.isArray(coll)) {
-    for (var i = 0; i < coll.length; i++) {
-      f(coll[i], i);
     }
-  } else {
-    for (var key in coll) {
-      f(coll[key], key);
+
+
+    //modify your closure to tell mark how many friends does he have.
+
+    // employeeA.listFriends(); // "you have 2 friends"
+
+
+    //=============================================================================
+    /*                                  Q2                                       */
+    //=============================================================================
+    //lets create a pet class using OOP concept,
+    // a - we need to create the pets (lets create only one for now), the invocation should take the name of the pet. 
+
+    // var pet1 = Pet("doggy");
+    function pets() {
+      var pet = {};
+      var availability = "false";
+      pet.name = name;
+      pet.addInfo = addInfo;
+      pet.increase = increase;
+      return pet;
     }
-  }
-}
 
-function reduce(array, f, acc) { 
- if (acc === undefined) { 
-   acc = array[0]; 
-   array = array.slice(1); 
- } 
- each(array, function(element, i) { 
-   acc = f(acc, element, i); 
- }); 
- return acc; 
-}
+    var name = function () {
+      return pets.this.name;
+    }
 
-// Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
+    // b - we need function to add the other info for the pet, called addInfo function. Make sure your functions unneeded memory space
 
-// Write your code here .....
+    // pet1.addInfo(age, owner, gender, species);
+    var addInfo = function (age, owner, gender, species) {
+      return pet + age + owner + gender + species;
 
+    }
+
+    // c- create another function to increase the pet age by n value.
+    var increase = function () {
+
+    }
+
+    // d - create a variable called availability with the default state as false, then create another function to check the pet state, returns true if the pet is available and false if it's not
+
+    // f- in order to change the state of the pet, create a function called changeState, when called it will make the pet avaliablity true,
+    //    and when called again it will make it false.
+
+
+    // Write your code here .....
+
+
+    // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
+
+    // Yes I am
+
+    // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    // ░░░░░░░░░░░░░▄▄▄▄▄▄▄░░░░░░░░░
+    // ░░░░░░░░░▄▀▀▀░░░░░░░▀▄░░░░░░░
+    // ░░░░░░░▄▀░░░░░░░░░░░░▀▄░░░░░░
+    // ░░░░░░▄▀░░░░░░░░░░▄▀▀▄▀▄░░░░░
+    // ░░░░▄▀░░░░░░░░░░▄▀░░██▄▀▄░░░░
+    // ░░░▄▀░░▄▀▀▀▄░░░░█░░░▀▀░█▀▄░░░
+    // ░░░█░░█▄▄░░░█░░░▀▄░░░░░▐░█░░░
+    // ░░▐▌░░█▀▀░░▄▀░░░░░▀▄▄▄▄▀░░█░░
+    // ░░▐▌░░█░░░▄▀░░░░░░░░░░░░░░█░░
+    // ░░▐▌░░░▀▀▀░░░░░░░░░░░░░░░░▐▌░
+    // ░░▐▌░░░░░░░░░░░░░░░▄░░░░░░▐▌░
+    // ░░▐▌░░░░░░░░░▄░░░░░█░░░░░░▐▌░
+    // ░░░█░░░░░░░░░▀█▄░░▄█░░░░░░▐▌░
+    // ░░░▐▌░░░░░░░░░░▀▀▀▀░░░░░░░▐▌░
+    // ░░░░█░░░░░░░░░░░░░░░░░░░░░█░░
+    // ░░░░▐▌▀▄░░░░░░░░░░░░░░░░░▐▌░░
+    // ░░░░░█░░▀░░░░░░░░░░░░░░░░▀░░░
+    // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+    //=============================================================================
+    /*                                  Q3                                       */
+    //=============================================================================
+    function each(coll, f) {
+      if (Array.isArray(coll)) {
+        for (var i = 0; i < coll.length; i++) {
+          f(coll[i], i);
+        }
+      } else {
+        for (var key in coll) {
+          f(coll[key], key);
+        }
+      }
+    }
+
+    function reduce(array, f, acc) {
+      if (acc === undefined) {
+        acc = array[0];
+        array = array.slice(1);
+      }
+      each(array, function (element, i) {
+        acc = f(acc, element, i);
+      });
+      return acc;
+    }
+
+    // Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
+
+
+    // Write your code here .....
+    function max(array) {
+      return reduce(array, function (max, element) {
+        if (element > max) {
+          max = element;
+        }
+        return max;
+      })
+    }
 
 
 
